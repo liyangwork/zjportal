@@ -5,10 +5,12 @@
 </template>
 
 <script>
+
     import Login from '@/components/Login'
 
     export default {
         name: 'app',
+        <!--ask电话卡技术的-->
         components: {
             Login
         }
