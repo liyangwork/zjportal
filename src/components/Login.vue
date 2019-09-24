@@ -58,7 +58,7 @@
                             this.ruleForm2.password === '123456'){
                             this.logining = false;
                             sessionStorage.setItem('user', this.ruleForm2.username);
-                            this.$router.push({path: '/index',query: { msg: this.ruleForm2.username}});
+                            this.$router.push({path: '/index/home',query: { msg: this.ruleForm2.username}});
                         }else{
                             this.logining = false;
                             this.$alert('username or password wrong!', 'info', {
@@ -66,7 +66,7 @@
                             })
                         }
                     }else{
-                        console.log('error submit!');
+//                        console.log('error submit!');
                         return false;
                     }
                 })

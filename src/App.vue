@@ -10,7 +10,6 @@
 
     export default {
         name: 'app',
-        <!--ask电话卡技术的-->
         components: {
             Login
         }
