@@ -54,19 +54,29 @@
                 this.$refs.ruleForm2.validate((valid) => {
                     if(valid){
                         this.logining = true;
-                        if(this.ruleForm2.username === 'admin' &&
-                            this.ruleForm2.password === '123456'){
-                            this.logining = false;
-                            sessionStorage.setItem('user', this.ruleForm2.username);
-                            this.$router.push({path: '/index/home',query: { msg: this.ruleForm2.username}});
-                        }else{
-                            this.logining = false;
-                            this.$alert('username or password wrong!', 'info', {
-                                confirmButtonText: 'ok'
-                            })
-                        }
+                        this.axios.post('/Organization/LoginIn',
+                            {userCode: "administrator", password: "admin@123", rendom: 1569402656717}).then((response)=>{
+                            console.log(response)
+                            if (response.data.Success){
+                                sessionStorage.setItem('user', response.data.User);
+                                this.$router.push({path: '/index',query: { msg: this.ruleForm2.username}});
+                            }
+                        }).catch((response)=>{
+                            console.log(response)
+                        })
+                        // if(this.ruleForm2.username === 'admin' &&
+                        //     this.ruleForm2.password === '123456'){
+                        //     this.logining = false;
+                        //     sessionStorage.setItem('user', this.ruleForm2.username);
+                        //     this.$router.push({path: '/index',query: { msg: this.ruleForm2.username}});
+                        // }else{
+                        //     this.logining = false;
+                        //     this.$alert('username or password wrong!', 'info', {
+                        //         confirmButtonText: 'ok'
+                        //     })
+                        // }
                     }else{
-//                        console.log('error submit!');
+                        console.log('error submit!');
                         return false;
                     }
                 })
